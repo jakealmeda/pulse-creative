@@ -1,0 +1,70 @@
+@use "sass:map";
+
+$helvetica-neue-fonts: (
+  "HelveticaNeueLTStd": (
+    "Th":               (weight: 100, stretch: normal, style: normal),
+    "ThCn":             (weight: 100, stretch: condensed, style: normal),
+    "ThCnO":            (weight: 100, stretch: condensed, style: oblique),
+    "ThEx":             (weight: 100, stretch: expanded, style: normal),
+    "ThExO":            (weight: 100, stretch: expanded, style: oblique),
+    "ThIt":             (weight: 100, stretch: normal, style: italic),
+    "UltLt":            (weight: 150, stretch: normal, style: normal),
+    "UltLtCn":          (weight: 150, stretch: condensed, style: normal),
+    "UltLTCnO":         (weight: 150, stretch: condensed, style: oblique),
+    "UltLtEx":          (weight: 150, stretch: expanded, style: normal),
+    "UltLtExO":         (weight: 150, stretch: expanded, style: oblique),
+    "UltLtIt":          (weight: 150, stretch: normal, style: italic),
+    "Lt":               (weight: 200, stretch: normal, style: normal),
+    "LtCn":             (weight: 200, stretch: condensed, style: normal),
+    "LtCnO":            (weight: 200, stretch: condensed, style: oblique),
+    "LtEx":             (weight: 200, stretch: expanded, style: normal),
+    "LtExO":            (weight: 200, stretch: expanded, style: oblique),
+    "LtIt":             (weight: 200, stretch: normal, style: italic),
+    "Roman":            (weight: 400, stretch: normal, style: normal),
+    "Cn":               (weight: 400, stretch: condensed, style: normal),
+    "CnO":              (weight: 400, stretch: condensed, style: oblique),
+    "Ex":               (weight: 400, stretch: expanded, style: normal),
+    "ExO":              (weight: 400, stretch: expanded, style: oblique),
+    "It":               (weight: 400, stretch: normal, style: italic),
+    "Md":               (weight: 500, stretch: normal, style: normal),
+    "MdCn":             (weight: 500, stretch: condensed, style: normal),
+    "MdCnO":            (weight: 500, stretch: condensed, style: oblique),
+    "MdEx":             (weight: 500, stretch: expanded, style: normal),
+    "MdExO":            (weight: 500, stretch: expanded, style: oblique),
+    "MdIt":             (weight: 500, stretch: normal, style: italic),
+    "Bd":               (weight: 700, stretch: normal, style: normal),
+    "BdCn":             (weight: 700, stretch: condensed, style: normal),
+    "BdCnO":            (weight: 700, stretch: condensed, style: oblique),
+    "BdEx":             (weight: 700, stretch: expanded, style: normal),
+    "BdExO":            (weight: 700, stretch: expanded, style: oblique),
+    "BdIt":             (weight: 700, stretch: normal, style: italic),
+    // "BdOu":             (weight: 700, stretch: normal, style: normal, outline: true),
+    "Hv":               (weight: 800, stretch: normal, style: normal),
+    "HvCn":             (weight: 800, stretch: condensed, style: normal),
+    "HvCnO":            (weight: 800, stretch: condensed, style: oblique),
+    "HvEx":             (weight: 800, stretch: expanded, style: normal),
+    "HvExO":            (weight: 800, stretch: expanded, style: oblique),
+    "HvIt":             (weight: 800, stretch: normal, style: italic),
+    "Blk":              (weight: 900, stretch: normal, style: normal),
+    "BlkCn":            (weight: 900, stretch: condensed, style: normal),
+    "BlkCnO":           (weight: 900, stretch: condensed, style: oblique),
+    "BlkEx":            (weight: 900, stretch: expanded, style: normal),
+    "BlkExO":           (weight: 900, stretch: expanded, style: oblique),
+    "BlkIt":            (weight: 900, stretch: normal, style: italic),
+    "XBlkCn":           (weight: 950, stretch: condensed, style: normal),
+    "XBlkCnO":          (weight: 950, stretch: condensed, style: oblique)
+  )
+);
+
+@each $family, $styles in $helvetica-neue-fonts {
+  @each $style-name, $props in $styles {
+    @font-face {
+      font-family: "#{$family}";
+      src: url("../fonts/woff2/#{$family}-#{$style-name}.woff2") format("woff2");
+      font-weight: map.get($props, weight);
+      font-style: map.get($props, style);
+      font-stretch: map.get($props, stretch);
+      font-display: swap;
+    }
+  }
+}
